@@ -1,4 +1,4 @@
-baseURL = 'https://putasstartups.com/'
+baseURL = 'https://putas-startups.pages.dev/'
 languageCode = 'es'
 title = 'P*tas Startups'
 theme = 'putas-theme'
