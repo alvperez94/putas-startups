@@ -1,0 +1,56 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div class="container">
+    <p class="hero__tagline">{{ .Site.Params.tagline }}</p>
+    <h1 class="hero__title">P<span class="asterisk">*</span>tas Startups</h1>
+    <p class="hero__subtitle">{{ .Site.Params.description }}. Datos reales, opiniones sin filtro y cero storytelling. Porque emprender no va de levantar rondas — va de arriesgar, ejecutar y facturar.</p>
+  </div>
+</section>
+
+<section class="posts-section">
+  <div class="container">
+    <p class="section-title">Lo ultimo</p>
+    {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
+    <article class="post-card">
+      <div class="post-card__meta">
+        {{ with .Params.categorias }}
+          <span class="post-card__category">{{ index . 0 }}</span>
+        {{ end }}
+        <time>{{ .Date.Format "2 Jan 2006" }}</time>
+        {{ with .Params.reading_time }}<span>{{ . }} min</span>{{ end }}
+      </div>
+      <h2 class="post-card__title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ with .Params.excerpt }}
+        <p class="post-card__excerpt">{{ . }}</p>
+      {{ else }}
+        <p class="post-card__excerpt">{{ .Summary | truncate 160 }}</p>
+      {{ end }}
+      {{ with .Params.tags }}
+      <div class="tags">
+        {{ range . }}
+          <a href="{{ "tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="newsletter-cta">
+      <h3>La dosis semanal de realidad</h3>
+      <p>Un email a la semana con lo que nadie te cuenta del ecosistema startup. Sin spam. Sin humo.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="tu@email.com" required>
+        <button type="submit">Suscribirse</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{ end }}

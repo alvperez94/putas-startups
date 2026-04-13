@@ -1,0 +1,45 @@
+baseURL = 'https://putasstartups.com/'
+languageCode = 'es'
+title = 'P*tas Startups'
+theme = 'putas-theme'
+
+[params]
+  description = 'El blog que el ecosistema startup no quiere que leas'
+  author = 'P*tas Startups'
+  tagline = 'Emprender va de arriesgar, no de storytelling'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'monokai'
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categorias'
+
+[menu]
+  [[menu.main]]
+    name = 'Inicio'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Posts'
+    url = '/posts/'
+    weight = 2
+  [[menu.main]]
+    name = 'Manifiesto'
+    url = '/manifiesto/'
+    weight = 3
+  [[menu.main]]
+    name = 'Sobre esto'
+    url = '/sobre/'
+    weight = 4
+
+[outputs]
+  home = ['HTML', 'RSS']
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.5

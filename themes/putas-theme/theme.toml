@@ -1,0 +1,9 @@
+name = "P*tas Theme"
+license = "MIT"
+licenselink = ""
+description = "Tema editorial oscuro para P*tas Startups"
+tags = ["blog", "editorial", "dark"]
+min_version = "0.100.0"
+
+[author]
+  name = "P*tas Startups"

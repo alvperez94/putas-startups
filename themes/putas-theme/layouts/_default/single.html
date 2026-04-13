@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+<article>
+  <header class="post-header">
+    <div class="container">
+      <div class="post-header__meta">
+        {{ with .Params.categorias }}
+          <span class="post-card__category">{{ index . 0 }}</span>
+        {{ end }}
+        <time>{{ .Date.Format "2 Jan 2006" }}</time>
+        {{ with .Params.reading_time }}<span>{{ . }} min de lectura</span>{{ end }}
+      </div>
+      <h1 class="post-header__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+        <p class="post-header__subtitle">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.tags }}
+      <div class="tags" style="margin-top: 1.5rem;">
+        {{ range . }}
+          <a href="{{ "tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="post-content">
+    <div class="container">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+
+<section>
+  <div class="container">
+    <div class="newsletter-cta">
+      <h3>Si esto te ha dolido, imagina lo que viene</h3>
+      <p>Un email a la semana con la verdad que el ecosistema startup no quiere que leas.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="tu@email.com" required>
+        <button type="submit">Quiero la verdad</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{ end }}
