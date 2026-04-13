@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section style="padding: 5rem 0 2rem;">
+  <div class="container">
+    <p class="hero__tagline">{{ .Type | humanize }}</p>
+    <h1 class="hero__title" style="font-size:2.5rem;">{{ .Title }}</h1>
+    <p style="color:var(--text-secondary); margin-top:1rem;">
+      {{ len .Pages }} {{ if eq (len .Pages) 1 }}artículo{{ else }}artículos{{ end }}
+    </p>
+  </div>
+</section>
+
+<section class="posts-section" style="padding-top:2rem;">
+  <div class="container">
+    <p class="section-title">Artículos</p>
+    {{ range .Pages }}
+    <article class="post-card">
+      <div class="post-card__meta">
+        {{ with .Params.categorias }}
+          <span class="post-card__category">{{ index . 0 }}</span>
+        {{ end }}
+        <time>{{ .Date.Format "2 Jan 2006" }}</time>
+        {{ with .Params.reading_time }}<span>{{ . }} min</span>{{ end }}
+      </div>
+      <h2 class="post-card__title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ with .Params.excerpt }}
+        <p class="post-card__excerpt">{{ . }}</p>
+      {{ else }}
+        <p class="post-card__excerpt">{{ .Summary | truncate 160 }}</p>
+      {{ end }}
+      {{ with .Params.tags }}
+      <div class="tags">
+        {{ range . }}
+          <a href="{{ "tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

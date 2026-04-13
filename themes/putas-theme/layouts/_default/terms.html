@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section style="padding: 5rem 0 2rem;">
+  <div class="container">
+    <p class="hero__tagline">Explorar</p>
+    <h1 class="hero__title" style="font-size:2.5rem;">{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="posts-section" style="padding-top:2rem;">
+  <div class="container">
+    <p class="section-title">{{ len .Data.Terms }} {{ if eq (len .Data.Terms) 1 }}entrada{{ else }}entradas{{ end }}</p>
+    <div class="tags" style="gap:0.8rem; margin-top:1rem;">
+      {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.Permalink }}" class="tag" style="padding:0.5rem 1rem; font-size:0.8rem;">
+          #{{ .Page.Title }} <span style="color:var(--text-muted); margin-left:0.3rem;">({{ .Count }})</span>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

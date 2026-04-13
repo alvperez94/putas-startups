@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section style="padding: 8rem 0; text-align: center;">
+  <div class="container">
+    <p class="hero__tagline">Error 404</p>
+    <h1 class="hero__title" style="font-size: 6rem; margin-bottom: 1rem;">P<span class="asterisk">*</span>ta</h1>
+    <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">
+      Esta página no existe. Como el modelo de negocio de muchas startups.
+    </p>
+    <a href="{{ .Site.BaseURL }}" style="
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.9rem 2rem;
+      transition: background 0.2s;
+    ">Volver al inicio</a>
+  </div>
+</section>
+{{ end }}
